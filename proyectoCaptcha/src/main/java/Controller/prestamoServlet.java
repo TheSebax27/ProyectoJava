@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Servlet para manejar operaciones con préstamos - Versión mejorada
+ * Servlet para manejar operaciones con préstamos - Versión corregida
  * @author HAWLETH
  */
 @WebServlet(name = "PrestamoServlet", urlPatterns = {
@@ -764,17 +764,17 @@ public class prestamoServlet extends HttpServlet {
         
         html.append("<div class='info-row'>");
         html.append("<span class='label'>📖 Libro:</span>");
-        html.append("<span class='value'>").append(prestamo.getTituloLibro()).append("</span>");
+        html.append("<span class='value'>").append(prestamo.getTituloLibro() != null ? prestamo.getTituloLibro() : "N/A").append("</span>");
         html.append("</div>");
         
         html.append("<div class='info-row'>");
         html.append("<span class='label'>✍️ Autor:</span>");
-        html.append("<span class='value'>").append(prestamo.getAutorLibro()).append("</span>");
+        html.append("<span class='value'>").append(prestamo.getAutorLibro() != null ? prestamo.getAutorLibro() : "N/A").append("</span>");
         html.append("</div>");
         
         html.append("<div class='info-row'>");
         html.append("<span class='label'>👤 Usuario:</span>");
-        html.append("<span class='value'>").append(prestamo.getNombreUsuario()).append("</span>");
+        html.append("<span class='value'>").append(prestamo.getNombreUsuario() != null ? prestamo.getNombreUsuario() : "N/A").append("</span>");
         html.append("</div>");
         
         html.append("<div class='info-row'>");
@@ -822,7 +822,7 @@ public class prestamoServlet extends HttpServlet {
     /**
      * Genera el HTML del reporte de inventario
      */
-    private String generarReporteHTML(List<prestamoServlet> prestamos, String[] estadisticas) {
+    private String generarReporteHTML(List<prestamoDTO> prestamos, String[] estadisticas) {
         StringBuilder html = new StringBuilder();
         html.append("<!DOCTYPE html>");
         html.append("<html><head><title>Reporte de Préstamos</title>");
@@ -888,12 +888,12 @@ public class prestamoServlet extends HttpServlet {
         html.append("<tbody>");
         
         java.util.Date hoy = new java.util.Date();
-        for (PrestamoDTO prestamo : prestamos) {
+        for (prestamoDTO prestamo : prestamos) {
             html.append("<tr>");
             html.append("<td>#").append(prestamo.getId()).append("</td>");
-            html.append("<td>").append(prestamo.getNombreUsuario()).append("</td>");
-            html.append("<td>").append(prestamo.getTituloLibro()).append("</td>");
-            html.append("<td>").append(prestamo.getAutorLibro()).append("</td>");
+            html.append("<td>").append(prestamo.getNombreUsuario() != null ? prestamo.getNombreUsuario() : "N/A").append("</td>");
+            html.append("<td>").append(prestamo.getTituloLibro() != null ? prestamo.getTituloLibro() : "N/A").append("</td>");
+            html.append("<td>").append(prestamo.getAutorLibro() != null ? prestamo.getAutorLibro() : "N/A").append("</td>");
             html.append("<td>").append(prestamo.getFechaPrestamo()).append("</td>");
             html.append("<td>").append(prestamo.getFechaDevolucion()).append("</td>");
             html.append("<td>");

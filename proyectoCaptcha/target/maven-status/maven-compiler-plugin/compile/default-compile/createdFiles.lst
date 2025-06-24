@@ -1,0 +1,15 @@
+DAO\usuarioDAO.class
+Controller\loginServlet.class
+Controller\usuarioServlet.class
+Utils\captchaGenerator.class
+Controller\libroServlet.class
+DAO\libroDAO.class
+DTO\usuarioDTO.class
+DTO\prestamoDTO.class
+Controller\CharacterEncodingFilter.class
+Controller\AuthenticationFilter.class
+Controller\prestamoServlet.class
+DAO\prestamoDAO.class
+Controller\DashboardServlet.class
+Model\conexion.class
+DTO\libroDTO.class
